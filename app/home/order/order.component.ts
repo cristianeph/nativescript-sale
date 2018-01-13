@@ -1,29 +1,34 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {RouterExtensions} from "nativescript-angular";
 import {BusService} from "../../services/bus.service";
+import {OrderSaleService} from "../../services/order-sale.service";
 
 @Component({
     moduleId: module.id,
-    selector: 'app-home/order',
+    selector: 'app-order',
     templateUrl: './order.component.html',
     styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-    product_description: string;
-    client_description: string;
+    public product_description: string;
+    public client_description: string;
+
 
     constructor(private router: RouterExtensions,
                 private busService: BusService,
-                private ngZone: NgZone) {
+                private zone: NgZone,
+                private orderSale: OrderSaleService) {
+        /*this.zone = new NgZone({ enableLongStackTrace: false });*/
     }
 
     ngOnInit() {
     }
 
     pageLoaded() {
-        this.product_description = "";
+        console.log("Order page => Loaded");
+        this.product_description = (this.orderSale.getProduct()) ? this.orderSale.getProduct() : "";
         this.client_description = "";
-        this.listenActions();
+        /*this.listenActions();*/
     }
 
     listenActions() {
@@ -36,16 +41,16 @@ export class OrderComponent implements OnInit {
     }
 
     setProduct(data) {
-        this.ngZone.run(() => {
+        this.zone.run(() => {
             this.product_description = data;
-            console.log("product-selection", data);
+            console.log("product-selection =>", this.product_description);
         });
     }
 
     setClient(data) {
-        this.ngZone.run(() => {
+        this.zone.run(() => {
             this.client_description = data;
-            console.log("client-selection", data);
+            console.log("client-selection =>", this.client_description);
         });
     }
 

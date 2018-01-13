@@ -4,8 +4,10 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import {BusService} from "./services/bus.service";
-import {NativeScriptFormsModule, NativeScriptRouterModule} from "nativescript-angular";
+import {NativeScriptFormsModule} from "nativescript-angular/forms";
+import {NativeScriptRouterModule} from "nativescript-angular";
 import {NativeScriptHttpModule} from "nativescript-angular/http";
+import {OrderSaleService} from "./services/order-sale.service";
 
 @NgModule({
     bootstrap: [
@@ -22,7 +24,8 @@ import {NativeScriptHttpModule} from "nativescript-angular/http";
         AppComponent
     ],
     providers: [
-        BusService
+        BusService,
+        OrderSaleService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

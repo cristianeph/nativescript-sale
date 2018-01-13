@@ -11,7 +11,7 @@ import {DebtsComponent} from "./debts/debts.component";
 import {ClientComponent} from "./client/client.component";
 import {ClientsComponent} from "./clients/clients.component";
 import {NativeScriptModule} from "nativescript-angular/nativescript.module";
-import {NativeScriptFormsModule} from "nativescript-angular";
+import {NativeScriptFormsModule} from "nativescript-angular/forms";
 
 @NgModule({
     imports: [
