@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+import {RouterExtensions} from "nativescript-angular";
 
 @Component({
     selector: "Home",
@@ -7,9 +8,13 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeComponent implements OnInit {
 
-    constructor() {
+    constructor(private router: RouterExtensions) {
     }
 
     ngOnInit(): void {
+    }
+
+    pageLoaded() {
+        this.router.navigate(["/home/order"]);
     }
 }
